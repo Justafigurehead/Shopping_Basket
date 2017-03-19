@@ -43,7 +43,9 @@ public class ShoppingBasket {
         for (Item item : items){
            counter += item.getPrice();
         }
-        return counter -= this.getBogofTotal();
+         counter -= this.getBogofTotal();
+        int total = counter - tenPCOff(counter);
+        return total;
     }
 
     public int getBogofTotal(){
@@ -58,7 +60,11 @@ public class ShoppingBasket {
         return counter;
 
     }
-    // Rubber duck here: For buy one get one free. It usually means that you get the cheapest item free when you buy another. At its most basic where every item is subject to the BOGOF coupon then every second item would be free. Therefore every odd index number would be free. So, rubber duck, if I got the count of shopping baskets' items, I could get the odd indexes and subtract it from the total counter.
+
+    public int tenPCOff(int value){
+        int total = (int) (value * 10f / 100f);
+        return total;
+    }
 }
 
 

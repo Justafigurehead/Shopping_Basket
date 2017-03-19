@@ -57,9 +57,15 @@ public class TestShoppingBasket {
     }
 
     @Test
-    public void testGetTotalOfAllItemsInBasket(){
+    public void testGetTotalOfAllItemsInBasketWithBOGOFandTenPercentOff(){
         shoppingBasket.addItem(biscuits);
         shoppingBasket.addItem(jam);
-        assertEquals(30, shoppingBasket.getTotal());
+        assertEquals(27, shoppingBasket.getTotal());
+    }
+
+    @Test
+    public void testGetTenPercentOffJam(){
+        shoppingBasket.addItem(jam);
+        assertEquals(2, shoppingBasket.tenPCOff(shoppingBasket.getItemPrice(jam)));
     }
 }
