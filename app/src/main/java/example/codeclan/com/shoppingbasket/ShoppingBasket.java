@@ -8,13 +8,13 @@ public class ShoppingBasket {
     private ArrayList<Item> items;
     private Customer customer;
 
-    public ShoppingBasket(Customer customer){
+    public ShoppingBasket(Customer customer) {
         this.items = new ArrayList<Item>();
         this.customer = customer;
     }
 
 
-    public int getNumberOfItems(){
+    public int getNumberOfItems() {
         return items.size();
     }
 
@@ -55,12 +55,13 @@ public class ShoppingBasket {
             return counter;
         }
     }
-    public int getBogofTotal(){
+
+    public int getBogofTotal() {
         int counter = 0;
 
         for (int i = 1;
              i < items.size();
-             i = i + 2){
+             i = i + 2) {
             Item item = items.get(i);
             counter += item.getPrice();
         }
@@ -68,7 +69,7 @@ public class ShoppingBasket {
 
     }
 
-    public int tenPCOff(int value){
+    public int tenPCOff(int value) {
         int total = (int) (value * 10f / 100f);
         return total;
     }
@@ -77,8 +78,11 @@ public class ShoppingBasket {
         return this.customer.checkLoyaltyCard();
     }
 
-    public void signUpCustomerForLC() {
-        this.customer.giveLoyaltyCard();
+
+    public void askToSignUpForLC(String answer) {
+        if (answer.equalsIgnoreCase("yes")) {
+            this.customer.giveLoyaltyCard();
+        }
     }
 }
 

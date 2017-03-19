@@ -18,7 +18,6 @@ public class TestShoppingBasket {
 
     @Before
     public void before(){
-
         customer = new Customer("Michaela");
         shoppingBasket = new ShoppingBasket(customer);
         jam = new Item(20);
@@ -97,8 +96,14 @@ public class TestShoppingBasket {
     }
 
     @Test
-    public void testGiveLCtoCustomer(){
-        shoppingBasket.signUpCustomerForLC();
+    public void testCustomerAsksToSignUpForLC(){
+        shoppingBasket.askToSignUpForLC("yes");
         assertEquals(true, shoppingBasket.askForLC());
+    }
+
+    @Test
+    public void testCustomerTurnsDownLC(){
+        shoppingBasket.askToSignUpForLC("No");
+        assertEquals(false, shoppingBasket.askForLC());
     }
 }
