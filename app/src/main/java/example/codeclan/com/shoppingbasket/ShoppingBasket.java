@@ -87,12 +87,10 @@ public class ShoppingBasket {
 
     public double loyaltyCardDC(){
         double total = getTotal();
-        System.out.println(total);
         double discountedTotal = 0;
         if (customer.checkLoyaltyCard()){
               discountedTotal = total * 2f /100;
         }
-        System.out.println(discountedTotal);
         return discountedTotal;
     }
 }

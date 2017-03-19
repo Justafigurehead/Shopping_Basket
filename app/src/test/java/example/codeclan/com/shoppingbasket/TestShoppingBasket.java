@@ -114,4 +114,11 @@ public class TestShoppingBasket {
         shoppingBasket.addItem(jam);
         assertEquals(0.54, shoppingBasket.loyaltyCardDC(), 0.01);
     }
+
+    @Test
+    public void testCustomerDoesNotHaveLCAndGetsNoDiscount(){
+        shoppingBasket.addItem(biscuits);
+        shoppingBasket.addItem(jam);
+        assertEquals(0, shoppingBasket.loyaltyCardDC(), 0.01);
+    }
 }
