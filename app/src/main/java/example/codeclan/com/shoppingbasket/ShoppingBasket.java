@@ -30,7 +30,7 @@ public class ShoppingBasket {
         items.clear();
     }
 
-    public int getItemPrice(Item selectedi) {
+    public double getItemPrice(Item selectedi) {
         for (Item item : items) {
             if (item == selectedi) {
                 return item.getPrice();
@@ -39,9 +39,9 @@ public class ShoppingBasket {
         return 0;
     }
 
-    public int getTotal() {
-        int counter = 0;
-        int total = 0;
+    public double getTotal() {
+        double counter = 0;
+        double total = 0;
 
         for (Item item : items) {
             counter += item.getPrice();
@@ -56,7 +56,7 @@ public class ShoppingBasket {
         }
     }
 
-    public int getBogofTotal() {
+    public double getBogofTotal() {
         int counter = 0;
 
         for (int i = 1;
@@ -69,9 +69,9 @@ public class ShoppingBasket {
 
     }
 
-    public int tenPCOff(int value) {
-        int total = (int) (value * 10f / 100f);
-        return total;
+    public double tenPCOff(double value) {
+        return value * 10f / 100f;
+
     }
 
     public boolean askForLC() {
@@ -83,6 +83,17 @@ public class ShoppingBasket {
         if (answer.equalsIgnoreCase("yes")) {
             this.customer.giveLoyaltyCard();
         }
+    }
+
+    public double loyaltyCardDC(){
+        double total = getTotal();
+        System.out.println(total);
+        double discountedTotal = 0;
+        if (customer.checkLoyaltyCard()){
+              discountedTotal = total * 2f /100;
+        }
+        System.out.println(discountedTotal);
+        return discountedTotal;
     }
 }
 

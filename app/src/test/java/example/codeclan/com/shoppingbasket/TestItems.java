@@ -19,6 +19,6 @@ public class TestItems {
 
     @Test
     public void testItemHasPrice(){
-        assertEquals(20, jam.getPrice());
+        assertEquals(20, jam.getPrice(), 0.01);
     }
 }

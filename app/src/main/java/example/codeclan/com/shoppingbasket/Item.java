@@ -3,17 +3,17 @@ package example.codeclan.com.shoppingbasket;
 
 public class Item {
 
-    private int price;
+    private double price;
 
-    public Item(int price){
+    public Item(double price){
      this.price = price;
     }
 
-    public int getPrice() {
+    public double getPrice() {
         return price;
     }
 
-    public void setPrice(int price) {
+    public void setPrice(double price) {
         this.price = price;
     }
 }

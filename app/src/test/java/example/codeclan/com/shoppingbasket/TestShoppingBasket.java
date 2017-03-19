@@ -56,38 +56,38 @@ public class TestShoppingBasket {
     @Test
     public void testCanGetPriceFromItemAddedToBasket(){
         shoppingBasket.addItem(biscuits);
-        assertEquals(30, shoppingBasket.getItemPrice(biscuits));
+        assertEquals(30, shoppingBasket.getItemPrice(biscuits), 0.01);
     }
 
     @Test
     public void testWillReceiveZeroIfItemIsNotInBasket(){
-        assertEquals(0, shoppingBasket.getItemPrice(jam));
+        assertEquals(0, shoppingBasket.getItemPrice(jam), 0.01);
     }
 
     @Test
     public void testGetTotalOfAllItemsInBasketWithBOGOFandTenPercentOff(){
         shoppingBasket.addItem(biscuits);
         shoppingBasket.addItem(jam);
-        assertEquals(27, shoppingBasket.getTotal());
+        assertEquals(27, shoppingBasket.getTotal(), 0.01);
     }
 
 
     @Test
     public void GetTenPercentOffJam(){
         shoppingBasket.addItem(jam);
-        assertEquals(2, shoppingBasket.tenPCOff(shoppingBasket.getItemPrice(jam)));
+        assertEquals(2, shoppingBasket.tenPCOff(shoppingBasket.getItemPrice(jam)), 0.01);
     }
 
     @Test
     public void testtestNoBogofAppliedAndNoTenPercentDiscountAdded(){
         shoppingBasket.addItem(gum);
-        assertEquals(2, shoppingBasket.getTotal());
+        assertEquals(2, shoppingBasket.getTotal(),0.01);
     }
 
     @Test
     public void testIfPurchaseIsNineteenAndNoTenPercentDCAdded(){
         shoppingBasket.addItem(book);
-        assertEquals(19, shoppingBasket.getTotal());
+        assertEquals(19, shoppingBasket.getTotal(), 0.01);
     }
 
     @Test
@@ -105,5 +105,13 @@ public class TestShoppingBasket {
     public void testCustomerTurnsDownLC(){
         shoppingBasket.askToSignUpForLC("No");
         assertEquals(false, shoppingBasket.askForLC());
+    }
+
+    @Test
+    public void testCustomerHasLCandGets2percentDC(){
+        shoppingBasket.askToSignUpForLC("yes");
+        shoppingBasket.addItem(biscuits);
+        shoppingBasket.addItem(jam);
+        assertEquals(0.54, shoppingBasket.loyaltyCardDC(), 0.01);
     }
 }
