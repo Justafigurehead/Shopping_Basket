@@ -39,15 +39,20 @@ public class ShoppingBasket {
 
     public int getTotal() {
         int counter = 0;
+        int total = 0;
 
-        for (Item item : items){
-           counter += item.getPrice();
+        for (Item item : items) {
+            counter += item.getPrice();
         }
-         counter -= this.getBogofTotal();
-        int total = counter - tenPCOff(counter);
-        return total;
-    }
+        counter -= this.getBogofTotal();
 
+        if (counter >= 20) {
+            total = counter - tenPCOff(counter);
+            return total;
+        } else {
+            return counter;
+        }
+    }
     public int getBogofTotal(){
         int counter = 0;
 

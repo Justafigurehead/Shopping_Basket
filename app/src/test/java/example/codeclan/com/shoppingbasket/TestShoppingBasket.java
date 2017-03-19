@@ -11,12 +11,16 @@ public class TestShoppingBasket {
     ShoppingBasket shoppingBasket;
     Item jam;
     Item biscuits;
+    Item gum;
+    Item book;
 
     @Before
     public void before(){
         shoppingBasket = new ShoppingBasket();
         jam = new Item(20);
         biscuits = new Item(30);
+        gum = new Item(2);
+        book = new Item(19);
     }
 
     @Test
@@ -63,9 +67,22 @@ public class TestShoppingBasket {
         assertEquals(27, shoppingBasket.getTotal());
     }
 
+
     @Test
-    public void testGetTenPercentOffJam(){
+    public void GetTenPercentOffJam(){
         shoppingBasket.addItem(jam);
         assertEquals(2, shoppingBasket.tenPCOff(shoppingBasket.getItemPrice(jam)));
+    }
+
+    @Test
+    public void testtestNoBogofAppliedAndNoTenPercentDiscountAdded(){
+        shoppingBasket.addItem(gum);
+        assertEquals(2, shoppingBasket.getTotal());
+    }
+
+    @Test
+    public void testIfPurchaseIsNineteenAndNoTenPercentDCAdded(){
+        shoppingBasket.addItem(book);
+        assertEquals(19, shoppingBasket.getTotal());
     }
 }
