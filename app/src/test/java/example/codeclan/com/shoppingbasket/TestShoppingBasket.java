@@ -14,6 +14,8 @@ public class TestShoppingBasket {
     Item gum;
     Item book;
 
+    Customer customer;
+
     @Before
     public void before(){
         shoppingBasket = new ShoppingBasket();
@@ -21,6 +23,7 @@ public class TestShoppingBasket {
         biscuits = new Item(30);
         gum = new Item(2);
         book = new Item(19);
+        customer = new Customer("Michaela");
     }
 
     @Test
@@ -84,5 +87,16 @@ public class TestShoppingBasket {
     public void testIfPurchaseIsNineteenAndNoTenPercentDCAdded(){
         shoppingBasket.addItem(book);
         assertEquals(19, shoppingBasket.getTotal());
+    }
+
+    @Test
+    public void testifCustomerHasLoyaltyCard(){
+        assertEquals(false, shoppingBasket.askForLC(customer));
+    }
+
+    @Test
+    public void testGiveLCtoCustomer(){
+        shoppingBasket.signUpCustomerForLC(customer);
+        assertEquals(true, shoppingBasket.askForLC(customer));
     }
 }

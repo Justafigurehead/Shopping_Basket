@@ -70,6 +70,14 @@ public class ShoppingBasket {
         int total = (int) (value * 10f / 100f);
         return total;
     }
+
+    public boolean askForLC(Customer customer) {
+        return customer.checkLoyaltyCard();
+    }
+
+    public void signUpCustomerForLC(Customer customer) {
+        customer.giveLoyaltyCard();
+    }
 }
 
 
