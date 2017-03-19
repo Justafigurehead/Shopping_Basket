@@ -19,4 +19,15 @@ public class TestCustomer {
     public void testCustomerHasName(){
         assertEquals("Michaela", customer.getName());
     }
+
+    @Test
+    public void testCustomerHasLoyaltyCard(){
+        assertEquals(false, customer.checkLoyaltyCard());
+    }
+
+    @Test
+    public void testCustomerCanSetLoyaltyCardToTrue(){
+        customer.giveLoyaltyCard();
+        assertEquals(true, customer.checkLoyaltyCard());
+    }
 }
