@@ -6,9 +6,11 @@ import java.util.ArrayList;
 public class ShoppingBasket {
 
     private ArrayList<Item> items;
+    private Customer customer;
 
-    public ShoppingBasket(){
+    public ShoppingBasket(Customer customer){
         this.items = new ArrayList<Item>();
+        this.customer = customer;
     }
 
 
@@ -71,12 +73,12 @@ public class ShoppingBasket {
         return total;
     }
 
-    public boolean askForLC(Customer customer) {
-        return customer.checkLoyaltyCard();
+    public boolean askForLC() {
+        return this.customer.checkLoyaltyCard();
     }
 
-    public void signUpCustomerForLC(Customer customer) {
-        customer.giveLoyaltyCard();
+    public void signUpCustomerForLC() {
+        this.customer.giveLoyaltyCard();
     }
 }
 

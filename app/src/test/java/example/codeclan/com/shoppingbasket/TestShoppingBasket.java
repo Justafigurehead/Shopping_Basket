@@ -8,22 +8,24 @@ import static org.junit.Assert.assertEquals;
 
 public class TestShoppingBasket {
 
+    Customer customer;
     ShoppingBasket shoppingBasket;
     Item jam;
     Item biscuits;
     Item gum;
     Item book;
 
-    Customer customer;
 
     @Before
     public void before(){
-        shoppingBasket = new ShoppingBasket();
+
+        customer = new Customer("Michaela");
+        shoppingBasket = new ShoppingBasket(customer);
         jam = new Item(20);
         biscuits = new Item(30);
         gum = new Item(2);
         book = new Item(19);
-        customer = new Customer("Michaela");
+
     }
 
     @Test
@@ -91,12 +93,12 @@ public class TestShoppingBasket {
 
     @Test
     public void testifCustomerHasLoyaltyCard(){
-        assertEquals(false, shoppingBasket.askForLC(customer));
+        assertEquals(false, shoppingBasket.askForLC());
     }
 
     @Test
     public void testGiveLCtoCustomer(){
-        shoppingBasket.signUpCustomerForLC(customer);
-        assertEquals(true, shoppingBasket.askForLC(customer));
+        shoppingBasket.signUpCustomerForLC();
+        assertEquals(true, shoppingBasket.askForLC());
     }
 }
