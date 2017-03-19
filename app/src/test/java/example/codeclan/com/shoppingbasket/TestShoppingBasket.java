@@ -60,6 +60,6 @@ public class TestShoppingBasket {
     public void testGetTotalOfAllItemsInBasket(){
         shoppingBasket.addItem(biscuits);
         shoppingBasket.addItem(jam);
-        assertEquals(50, shoppingBasket.getTotal());
+        assertEquals(30, shoppingBasket.getTotal());
     }
 }
