@@ -121,4 +121,12 @@ public class TestShoppingBasket {
         shoppingBasket.addItem(jam);
         assertEquals(0, shoppingBasket.loyaltyCardDC(), 0.01);
     }
+
+    @Test
+    public void testCustomerHasLCAndDiscountGetsAppliedToTotal(){
+        shoppingBasket.askToSignUpForLC("yes");
+        shoppingBasket.addItem(biscuits);
+        shoppingBasket.addItem(jam);
+        assertEquals(26.5, shoppingBasket.getCustomerTotal(), 0.1);
+    }
 }

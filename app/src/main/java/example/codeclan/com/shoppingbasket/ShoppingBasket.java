@@ -93,6 +93,12 @@ public class ShoppingBasket {
         }
         return discountedTotal;
     }
+
+    public double getCustomerTotal() {
+        double total = getTotal();
+        double loyaltyCardDC = this.loyaltyCardDC();
+        return total -= loyaltyCardDC;
+    }
 }
 
 
