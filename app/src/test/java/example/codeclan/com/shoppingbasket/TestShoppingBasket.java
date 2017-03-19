@@ -129,4 +129,11 @@ public class TestShoppingBasket {
         shoppingBasket.addItem(jam);
         assertEquals(26.5, shoppingBasket.getCustomerTotal(), 0.1);
     }
+
+    @Test
+    public void testCustomerGetsCustomerTotalButHasNoLC(){
+        shoppingBasket.addItem(biscuits);
+        shoppingBasket.addItem(jam);
+        assertEquals(27, shoppingBasket.getCustomerTotal(), 0.1);
+    }
 }
